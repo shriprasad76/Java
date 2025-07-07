@@ -1,0 +1,107 @@
+package tester;
+import java.util.Scanner;
+public class Point2D {
+    private double x;
+    private double y;
+
+    public Point2D(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public boolean isEqual(Point2D other) {
+        return this.x == other.x && this.y == other.y;
+    }
+
+    public double calculateDistance(Point2D other) {
+        return Math.sqrt(Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2));
+    }
+
+    @Override
+    public String toString() {
+        return "Point2D [x=" + x + ", y=" + y + "]";
+    }
+
+
+
+public class TestPointArray1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of points: ");
+        int numPoints = sc.nextInt();
+        int j;
+        Point2D[] points = new Point2D[numPoints];
+
+        for (int i = 0; i < numPoints; i++) {
+        	j=i+1;
+            System.out.print("Enter x and y coordinates for point " + j + ": ");
+            double x = sc.nextDouble();
+            double y = sc.nextDouble();
+            points[i] = new Point2D(x, y);
+        }
+
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Display etails of single point");
+            System.out.println("2. Display x, y coordinates of all points");
+            System.out.println("3. Calculate distance:");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the index of the point to display: ");
+                    int index = sc.nextInt();
+                    if (index >= 0 && index < numPoints) {
+                        System.out.println("Point at index " + index + ": " + points[index]);
+                    } else {
+                        System.out.println("Invalid index");
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("All points:");
+                    for (Point2D point : points) {
+                        System.out.println(point);
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter the indices of two points: ");
+                    int id1 = sc.nextInt();
+                    int id2 = sc.nextInt();
+                    if (id1 >= 0 && id1 < numPoints && id2 >= 0 && id2 < numPoints) {
+                        if (!points[id1].isEqual(points[id2])) {
+                            double distance = points[id1].calculateDistance(points[id2]);
+                            System.out.println("Distance between points: " + distance);
+                        } else {
+                            System.out.println(" points are at the same position!");
+                        }
+                    } else {
+                        System.out.println("Invalid indices");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Thank you");
+                    sc.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+    }
+}
+}
+
