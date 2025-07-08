@@ -1,0 +1,85 @@
+package com.assignment2;
+class Invo{
+	String Partno;
+	String Partdisc;
+	int quantity;
+	Double price;
+	Double amount;
+	
+	public Invo(String Partno,String Partdisc,int quantity,Double price)
+	{
+		this.Partno=Partno;
+		this.Partdisc=Partdisc;
+		this.quantity=quantity;
+		this.price=price;
+	}
+	public String getpartno()
+	{
+		return Partno;
+	}
+	public void setPartno(String Partno)
+	{
+		this.Partno=Partno;
+	}
+	public String getPartdisc()
+	{
+		return Partdisc;
+	}
+	public void setPartdisc(String Partdisc)
+	{
+		this.Partdisc=Partdisc;
+	}
+	public int getquantity()
+	{
+		return quantity;
+	}
+	public void setquantity(int quantity)
+	{
+		this.quantity=quantity;
+	}
+	public Double price()
+	{
+		return price;
+	}
+	public void setprice(Double price)
+	{
+		this.price=price;
+	}
+	public void display()
+	{
+		System.out.println("Part number:"+Partno);
+		System.out.println("Part Discription:"+Partdisc);
+		System.out.println("Part Quantity:"+quantity);
+		System.out.println("Part Price:"+price);
+		amount=quantity*price;
+		System.out.println("Invoice Ammount:"+amount+"Rupees");
+		
+		
+	}
+}
+
+public class Invoice {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	   
+		Invo newpart=new Invo("I123","Car Wiper",100,50.00);
+		System.out.println("The part is:");
+		newpart.display();
+		newpart.setPartno("I124");
+		newpart.setPartdisc("Car Gear Knob");
+		newpart.setquantity(50);
+		newpart.setprice(100.00);
+		System.out.println(" ");
+		System.out.println("The changed part:");
+		newpart.display();
+		
+		
+		
+		
+		
+		
+
+	}
+
+}
